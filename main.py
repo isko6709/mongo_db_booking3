@@ -28,7 +28,9 @@ async def check_database():
         database = await get_database()
         await database.command('ping')
 
-        return {'status': 'ok', 'database': database.name, 'connection': 'active'}
+        return {'status': 'ok',
+                'database': database.name,
+                'connection': 'active'}
 
     except PyMongoError:
         raise HTTPException(status_code=500, detail='Mongodb не доступен')
